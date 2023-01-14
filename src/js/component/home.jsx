@@ -1,24 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
+	const [activeRed, setActiveRed] = useState("opacity-100");
+	const [activeYellow, setActiveYellow] = useState("opacity-25");
+	const [ActiveGreen, setActiveGreen] = useState("opacity-25");
+
+	//ternario ? :
+
+	const changeColorRed = () => {
+		if (activeRed === "opacity-25") {
+			setActiveRed("opacity-100")
+			setActiveYellow("opacity-25")
+			setActiveGreen("opacity-25")
+		}
+	}
+
+	const changeColorYellow = () => {
+		if (activeYellow === "opacity-25") {
+			setActiveYellow("opacity-100")
+			setActiveRed("opacity-25")
+			setActiveGreen("opacity-25")
+		}
+	}
+
+	
+	const changeColorGreen = () => {
+		if (ActiveGreen === "opacity-25") {
+			setActiveGreen("opacity-100")
+			setActiveRed("opacity-25")
+			setActiveYellow("opacity-25")
+		}
+	}
+
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container d-flex justify-content-center flex-column align-items-center rounded">
+			<div className={"rounded-circle btn btn-danger "  + activeRed} onClick={changeColorRed}></div>
+			<div className={"rounded-circle btn btn-warning " + activeYellow} onClick={changeColorYellow}></div>
+			<div className={"rounded-circle btn btn-success " + ActiveGreen} onClick={changeColorGreen}></div>
 		</div>
 	);
 };
